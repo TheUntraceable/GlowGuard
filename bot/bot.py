@@ -139,5 +139,5 @@ class Bot(DBot):
 
     def run(self):
         super().run(
-            self.config["devToken"] if self.config["dev"] else self.config["token"]
+            self.config["token"]
         )
