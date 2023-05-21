@@ -27,6 +27,9 @@ from cogs.utils import (
     MissingPermissionsForTagDeletion,
     MissingPermissionsForTagEdit,
     WarnNotFound,
+    MissingGuildUserData,
+    BotFailedHierarchy,
+    FailedHierarchy,
 )
 
 
@@ -127,6 +130,31 @@ class BetterCommandTree(CommandTree):
         elif isinstance(error, WarnNotFound):
             await interaction.response.send_message(
                 "This warn does not exist.",
+                ephemeral=True,
+            )
+        elif isinstance(error, MissingGuildUserData):
+            await interaction.response.send_message(
+                "The data for your user indicates this has not been used in a server.",
+                ephemeral=True,
+            )
+        elif isinstance(error, BotFailedHierarchy):
+            await interaction.response.send_message(
+                (
+                    f"{error.target} is above me in roles, meaning I can't do that."
+                    "Please move me above them in roles and try again."
+                ),
+                ephemeral=True,
+            )
+        elif isinstance(error, FailedHierarchy):
+            await interaction.response.send_message(
+                (
+                    f"{error.target} is above you in roles, meaning you can't do that. "
+                    f"Make sure that {error.target.top_role} "
+                    f"(position {error.target.top_role.position}) "
+                    f"is below {error.invoker.top_role} (position"
+                    f"{error.invoker.top_role.position}). "
+                    "Please move them below you in roles and try again."
+                ),
                 ephemeral=True,
             )
         else:
