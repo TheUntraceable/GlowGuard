@@ -1,4 +1,9 @@
-from .exceptions import TagNotFound, TagExists, MissingPermissionsForTagDeletion, MissingPermissionsForTagEdit
+from .exceptions import (
+    TagNotFound,
+    TagExists,
+    MissingPermissionsForTagDeletion,
+    MissingPermissionsForTagEdit,
+)
 
 __all__ = (
     "TagNotFound",

@@ -8,8 +8,10 @@ class TagNotFound(AppCommandError):
 class TagExists(AppCommandError):
     """Raised when a tag already exists"""
 
+
 class MissingPermissionsForTagDeletion(AppCommandError):
     """Raised when a user is missing permissions to delete a tag"""
+
 
 class MissingPermissionsForTagEdit(AppCommandError):
     """Raised when a user is missing permissions to edit a tag"""
