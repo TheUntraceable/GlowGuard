@@ -21,6 +21,12 @@ from discord.ext.commands import when_mentioned
 from discord.interactions import Interaction
 from motor.motor_asyncio import AsyncIOMotorClient
 
+from cogs.utils import (
+    TagExists,
+    TagNotFound,
+    MissingPermissionsForTagDeletion,
+    MissingPermissionsForTagEdit,
+)
 
 class BetterCommandTree(CommandTree):
     """A subclass of CommandTree that adds a few extra methods to make
@@ -95,6 +101,26 @@ class BetterCommandTree(CommandTree):
                     f"This command is on cooldown. Try again in {error.retry_after:.2f}"
                     "seconds."
                 )
+            )
+        elif isinstance(error, TagNotFound):
+            await interaction.response.send_message(
+                "This tag does not exist.",
+                ephemeral=True,
+            )
+        elif isinstance(error, TagExists):
+            await interaction.response.send_message(
+                "This tag already exists.",
+                ephemeral=True,
+            )
+        elif isinstance(error, MissingPermissionsForTagDeletion):
+            await interaction.response.send_message(
+                "You are missing permissions to delete this tag.",
+                ephemeral=True,
+            )
+        elif isinstance(error, MissingPermissionsForTagEdit):
+            await interaction.response.send_message(
+                "You are missing permissions to edit this tag.",
+                ephemeral=True,
             )
         else:
             await interaction.response.send_message(
