@@ -3,8 +3,10 @@ from .exceptions import (
     TagExists,
     MissingPermissionsForTagDeletion,
     MissingPermissionsForTagEdit,
+    WarnNotFound,
 )
 from .misc import (
+    Confirm,
     generate_code
 )
 
@@ -13,5 +15,7 @@ __all__ = (
     "TagExists",
     "MissingPermissionsForTagDeletion",
     "MissingPermissionsForTagEdit",
+    "WarnNotFound",
+    "Confirm",
     "generate_code"
 )
