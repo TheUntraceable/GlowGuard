@@ -10,7 +10,9 @@ from .exceptions import (
     CannotPerformActionOnSelf,
     CannotPerformActionOnMe,
     CannotPerformActionOnBot,
-    CannotPerformActionOnOwner
+    CannotPerformActionOnOwner,
+    DurationTooLong,
+    InvalidDuration,
 )
 from .misc import Confirm, generate_code
 
@@ -27,6 +29,8 @@ __all__ = (
     "CannotPerformActionOnMe",
     "CannotPerformActionOnBot",
     "CannotPerformActionOnOwner",
+    "DurationTooLong",
+    "InvalidDuration",
     "Confirm",
     "generate_code",
 )
