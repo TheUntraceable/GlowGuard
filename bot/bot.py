@@ -26,7 +26,7 @@ from cogs.utils import (
     TagNotFound,
     MissingPermissionsForTagDeletion,
     MissingPermissionsForTagEdit,
-    WarnNotFound
+    WarnNotFound,
 )
 
 

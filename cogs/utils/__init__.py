@@ -5,12 +5,9 @@ from .exceptions import (
     MissingPermissionsForTagEdit,
     WarnNotFound,
     FailedHierarchy,
-    BotFailedHierarchy
+    BotFailedHierarchy,
 )
-from .misc import (
-    Confirm,
-    generate_code
-)
+from .misc import Confirm, generate_code
 
 __all__ = (
     "TagNotFound",
@@ -21,5 +18,5 @@ __all__ = (
     "FailedHierarchy",
     "BotFailedHierarchy",
     "Confirm",
-    "generate_code"
+    "generate_code",
 )
