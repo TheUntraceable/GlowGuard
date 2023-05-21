@@ -146,6 +146,7 @@ class Bot(DBot):
         cluster = AsyncIOMotorClient(self.config["mongo_url"])
 
         self.tags = cluster["bot"]["tags"]
+        self.warns = cluster["bot"]["warns"]
 
     def reload_config(self):
         with open("config.json") as f:
