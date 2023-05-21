@@ -13,8 +13,9 @@ from .exceptions import (
     CannotPerformActionOnOwner,
     DurationTooLong,
     InvalidDuration,
+    UserNotMuted,
 )
-from .misc import Confirm, generate_code
+from .misc import Confirm, generate_code, format_timedelta
 
 __all__ = (
     "TagNotFound",
@@ -32,5 +33,7 @@ __all__ = (
     "DurationTooLong",
     "InvalidDuration",
     "Confirm",
+    "UserNotMuted",
     "generate_code",
+    "format_timedelta",
 )
