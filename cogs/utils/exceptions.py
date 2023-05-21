@@ -45,3 +45,15 @@ class BotFailedHierarchy(BaseFailedHierarchy):
 
 class MissingGuildUserData(AppCommandError):
     """Raised when we receive an instance of User instead of Member"""
+
+class CannotPerformActionOnBot(AppCommandError):
+    """Raised when a user attempts to perform a moderation action on the bot"""
+
+class CannotPerformActionOnSelf(AppCommandError):
+    """Raised when a user attempts to perform a moderation action on themselves"""
+
+class CannotPerformActionOnOwner(AppCommandError):
+    """Raised when a user attempts to perform a moderation action on the owner"""
+
+class CannotPerformActionOnMe(AppCommandError):
+    """Raised when a user attempts to perform a moderation action on me"""
