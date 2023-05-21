@@ -21,3 +21,6 @@ class WarnNotFound(AppCommandError):
 
 class FailedHierarchy(AppCommandError):
     """Raised when a user is missing permissions to perform an action on another user"""
+
+class BotFailedHierarchy(AppCommandError):
+    """Raised when the bot is missing permissions to perform an action on a user"""
