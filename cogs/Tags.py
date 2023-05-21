@@ -114,14 +114,14 @@ class Tags(Cog):
             and not interaction.permissions.manage_messages
         ):
             raise MissingPermissionsForTagEdit
-        
+
         await self.bot.tags.update_one(
             tag,
             {
                 "$set": {
                     "content": content,
                 }
-            }
+            },
         )
 
         await interaction.response.send_message(
@@ -131,7 +131,6 @@ class Tags(Cog):
 
         # TODO: Maybe an audit log?
         # TODO: Should add aliases?
-
 
 
 async def setup(bot: Bot):

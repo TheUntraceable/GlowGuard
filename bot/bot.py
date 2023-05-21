@@ -28,6 +28,7 @@ from cogs.utils import (
     MissingPermissionsForTagEdit,
 )
 
+
 class BetterCommandTree(CommandTree):
     """A subclass of CommandTree that adds a few extra methods to make
     it easier to work with application commands"""
