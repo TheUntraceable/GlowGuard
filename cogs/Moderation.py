@@ -317,5 +317,9 @@ class Moderation(Cog):
         
         await user.timeout(None, reason=format_reason(interaction.user, reason))
 
+        await interaction.edit_original_response(
+            content=f"Unmuted {user.mention}.\nReason: `{reason}`"
+        )
+
 async def setup(bot: Bot):
     await bot.add_cog(Moderation(bot))
