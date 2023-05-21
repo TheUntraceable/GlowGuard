@@ -1,2 +1,3 @@
 config.json
 .ruff_cache
+.vscode
