@@ -10,3 +10,6 @@ class TagExists(AppCommandError):
 
 class MissingPermissionsForTagDeletion(AppCommandError):
     """Raised when a user is missing permissions to delete a tag"""
+
+class MissingPermissionsForTagEdit(AppCommandError):
+    """Raised when a user is missing permissions to edit a tag"""
