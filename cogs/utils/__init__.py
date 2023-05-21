@@ -6,6 +6,7 @@ from .exceptions import (
     WarnNotFound,
     FailedHierarchy,
     BotFailedHierarchy,
+    MissingGuildUserData
 )
 from .misc import Confirm, generate_code
 
@@ -17,6 +18,7 @@ __all__ = (
     "WarnNotFound",
     "FailedHierarchy",
     "BotFailedHierarchy",
+    "MissingGuildUserData",
     "Confirm",
     "generate_code",
 )
