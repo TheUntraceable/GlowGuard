@@ -26,6 +26,7 @@ from cogs.utils import (
     TagNotFound,
     MissingPermissionsForTagDeletion,
     MissingPermissionsForTagEdit,
+    WarnNotFound
 )
 
 
@@ -121,6 +122,11 @@ class BetterCommandTree(CommandTree):
         elif isinstance(error, MissingPermissionsForTagEdit):
             await interaction.response.send_message(
                 "You are missing permissions to edit this tag.",
+                ephemeral=True,
+            )
+        elif isinstance(error, WarnNotFound):
+            await interaction.response.send_message(
+                "This warn does not exist.",
                 ephemeral=True,
             )
         else:
