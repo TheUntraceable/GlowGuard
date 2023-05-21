@@ -35,19 +35,13 @@ class BetterCommandTree(CommandTree):
         self.application_commands = commands
         return commands
 
-    async def get_application_command(
-        self, *, id: int
-    ) -> Optional[AppCommand]:
+    async def get_application_command(self, *, id: int) -> Optional[AppCommand]:
         """Gets an application command by its ID"""
         if not self.application_commands:
             await self.fetch_commands()
 
         return next(
-            (
-                command
-                for command in self.application_commands
-                if command.id == id
-            ),
+            (command for command in self.application_commands if command.id == id),
             None,
         )
 
@@ -71,15 +65,14 @@ class BetterCommandTree(CommandTree):
             await interaction.response.send_message(
                 (
                     "I am missing the following permissions: "
-                    ', '.join(error.missing_permissions)
+                    ", ".join(error.missing_permissions)
                 ),
                 ephemeral=True,
             )
         elif isinstance(error, MissingAnyRole):
             roles = [f"<@&{role}>" for role in error.missing_roles]
             await interaction.response.send_message(
-                "You are missing the following roles: "
-                ', '.join(roles),
+                "You are missing the following roles: " ", ".join(roles),
                 allowed_mentions=AllowedMentions.none(),
                 ephemeral=True,
             )
@@ -93,7 +86,7 @@ class BetterCommandTree(CommandTree):
             await interaction.response.send_message(
                 (
                     "You are missing the following permissions: "
-                    ', '.join(error.missing_permissions),
+                    ", ".join(error.missing_permissions),
                 )
             )
         elif isinstance(error, CommandOnCooldown):
@@ -124,6 +117,7 @@ class Bot(DBot):
         self.config = json.load(open("config.json"))
         self.tree: BetterCommandTree
         cluster = AsyncIOMotorClient(self.config["mongo_url"])
+
         self.tags = cluster["bot"]["tags"]
 
     def reload_config(self):
@@ -138,6 +132,4 @@ class Bot(DBot):
                 await self.load_extension(f"cogs.{file_[:-3]}")
 
     def run(self):
-        super().run(
-            self.config["token"]
-        )
+        super().run(self.config["token"])
