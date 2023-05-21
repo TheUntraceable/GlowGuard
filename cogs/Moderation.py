@@ -29,7 +29,8 @@ from .utils import (
     DurationTooLong,
     UserNotMuted,
     generate_code,
-    format_timedelta
+    format_timedelta,
+    format_reason
 )
 
 if TYPE_CHECKING:
@@ -257,7 +258,7 @@ class Moderation(Cog):
 
         await user.timeout(
             duration,
-            reason=reason
+            reason=format_reason(interaction.user, reason)
         )
 
         await interaction.edit_original_response(
@@ -314,7 +315,7 @@ class Moderation(Cog):
         elif user.timed_out_until is None:
             raise UserNotMuted(user)
         
-        await user.timeout(None, reason=reason)
+        await user.timeout(None, reason=format_reason(interaction.user, reason))
 
 async def setup(bot: Bot):
     await bot.add_cog(Moderation(bot))

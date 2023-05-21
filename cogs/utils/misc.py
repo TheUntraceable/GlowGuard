@@ -2,13 +2,17 @@ from datetime import timedelta
 from random import sample
 from string import ascii_letters, digits
 
-from discord import ButtonStyle, Interaction
+from discord import ButtonStyle, Interaction, Member
 from discord.ui import View, button
 
 
 def generate_code(length: int) -> str:
     """Generate a random code with the given length."""
     return "".join(sample(ascii_letters + digits, length))
+
+def format_reason(invoker: Member, reason: str):
+    """Format a reason with the invoker's name."""
+    return f"{invoker} ({invoker.id}): {reason})"
 
 
 def format_timedelta(delta: timedelta) -> str:

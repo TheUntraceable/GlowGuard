@@ -15,7 +15,7 @@ from .exceptions import (
     InvalidDuration,
     UserNotMuted,
 )
-from .misc import Confirm, generate_code, format_timedelta
+from .misc import Confirm, generate_code, format_timedelta, format_reason
 
 __all__ = (
     "TagNotFound",
@@ -36,4 +36,5 @@ __all__ = (
     "UserNotMuted",
     "generate_code",
     "format_timedelta",
+    "format_reason",
 )
