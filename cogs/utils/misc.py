@@ -10,6 +10,7 @@ def generate_code(length: int) -> str:
     """Generate a random code with the given length."""
     return "".join(sample(ascii_letters + digits, length))
 
+
 def format_reason(invoker: Member, reason: str):
     """Format a reason with the invoker's name."""
     return f"{invoker} ({invoker.id}): {reason})"

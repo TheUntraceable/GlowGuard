@@ -13,7 +13,7 @@ from discord.app_commands import (
     MissingPermissions,
     MissingRole,
     NoPrivateMessage,
-    CommandOnCooldown
+    CommandOnCooldown,
 )
 
 from cogs.utils import (
@@ -36,6 +36,7 @@ from cogs.utils import (
 
 if TYPE_CHECKING:
     from .bot import Bot
+
 
 class BetterCommandTree(CommandTree):
     """A subclass of CommandTree that adds a few extra methods to make
@@ -79,8 +80,9 @@ class BetterCommandTree(CommandTree):
         elif isinstance(error, BotMissingPermissions):
             await interaction.response.send_message(
                 (
-                    "I am missing the following permissions: "
-                    ", ".join(error.missing_permissions)
+                    "I am missing the following permissions: " ", ".join(
+                        error.missing_permissions
+                    )
                 ),
                 ephemeral=True,
             )
@@ -100,8 +102,9 @@ class BetterCommandTree(CommandTree):
         elif isinstance(error, MissingPermissions):
             await interaction.response.send_message(
                 (
-                    "You are missing the following permissions: "
-                    ", ".join(error.missing_permissions),
+                    "You are missing the following permissions: " ", ".join(
+                        error.missing_permissions
+                    ),
                 )
             )
         elif isinstance(error, CommandOnCooldown):

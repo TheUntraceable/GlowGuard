@@ -30,7 +30,7 @@ from .utils import (
     UserNotMuted,
     generate_code,
     format_timedelta,
-    format_reason
+    format_reason,
 )
 
 if TYPE_CHECKING:
@@ -219,11 +219,11 @@ class Moderation(Cog):
     ):
         if not interaction.guild:
             raise NoPrivateMessage
-        
+
         if not self.bot.user:  # Needed to silence Ruff
             # Can never be the case because once connected to gateway
             # we get the data, and only then can we get interactions.
-            return  
+            return
 
         if isinstance(interaction.user, User):
             raise MissingGuildUserData
@@ -252,14 +252,11 @@ class Moderation(Cog):
 
         if duration.total_seconds() == 0:
             raise InvalidDuration(duration.total_seconds())
-        
+
         if duration.total_seconds() > timedelta(days=28).total_seconds():
             raise DurationTooLong(duration.total_seconds())
 
-        await user.timeout(
-            duration,
-            reason=format_reason(interaction.user, reason)
-        )
+        await user.timeout(duration, reason=format_reason(interaction.user, reason))
 
         await interaction.edit_original_response(
             content=(
@@ -289,11 +286,11 @@ class Moderation(Cog):
 
         if not interaction.guild:
             raise NoPrivateMessage
-        
+
         if not self.bot.user:  # Needed to silence Ruff
             # Can never be the case because once connected to gateway
             # we get the data, and only then can we get interactions.
-            return  
+            return
 
         if isinstance(interaction.user, User):
             raise MissingGuildUserData
@@ -314,12 +311,13 @@ class Moderation(Cog):
             raise CannotPerformActionOnOwner
         elif user.timed_out_until is None:
             raise UserNotMuted(user)
-        
+
         await user.timeout(None, reason=format_reason(interaction.user, reason))
 
         await interaction.edit_original_response(
             content=f"Unmuted {user.mention}.\nReason: `{reason}`"
         )
+
 
 async def setup(bot: Bot):
     await bot.add_cog(Moderation(bot))

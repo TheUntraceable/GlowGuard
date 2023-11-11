@@ -8,6 +8,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from .tree import BetterCommandTree
 
+
 class Bot(DBot):
     def __init__(self):
         intents = Intents()

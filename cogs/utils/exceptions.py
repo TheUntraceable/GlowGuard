@@ -82,7 +82,9 @@ class InvalidDuration(BaseDurationError):
 class DurationTooLong(BaseDurationError):
     """Raised when a duration is too long"""
 
+
 class UserNotMuted(AppCommandError):
     """Raised when a user is not muted"""
+
     def __init__(self, member: Member):
         self.member = member
